@@ -1,40 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Question</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Elsa ❤️</title>
 
 <style>
-body{
+*{
     margin:0;
-    font-family:Arial,sans-serif;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
     background:linear-gradient(135deg,#ffd6e8,#ffecc7);
     display:flex;
     justify-content:center;
     align-items:center;
     height:100vh;
-    text-align:center;
+    overflow:hidden;
 }
 
 .box{
+    width:400px;
+    max-width:90%;
     background:white;
     padding:30px;
     border-radius:20px;
-    box-shadow:0 10px 20px rgba(0,0,0,.2);
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+h1{
+    color:#ff4081;
+}
+
+p{
+    margin:15px 0;
+    font-size:20px;
 }
 
 button{
-    padding:12px 25px;
-    font-size:18px;
+    padding:12px 30px;
     border:none;
     border-radius:10px;
+    font-size:18px;
     cursor:pointer;
     margin:10px;
+    transition:.3s;
 }
 
 #yes{
     background:#4CAF50;
     color:white;
+}
+
+#yes:hover{
+    transform:scale(1.1);
 }
 
 #no{
@@ -45,121 +68,147 @@ button{
 
 #celebration{
     display:none;
-    font-size:25px;
-    animation:pop 1s infinite alternate;
+    animation:fade .8s;
 }
 
-@keyframes pop{
-from{transform:scale(1);}
-to{transform:scale(1.1);}
+#celebration img{
+    width:250px;
+    border-radius:15px;
+    margin:20px 0;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:scale(.5);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
 }
 </style>
+
 </head>
 
 <body>
 
 <div class="box">
 
-<div class="header">
-    <h1>Hi Elsa, Miss You 💖</h1>
-    <p> complete panalamaaa ? ❤️</p>
+<div id="question">
+
+<h1>Hi Elsa ❤️</h1>
+
+<p>Miss You 💕</p>
+
+<h2>Complete Panalamaaa? 🥺</h2>
+
 </div>
 
 <div id="buttons">
-<button id="yes" onclick="celebrate()">Yes</button>
-function celebrate() {
-    document.getElementById("buttons").style.display = "none";
 
-    document.getElementById("celebration").innerHTML = `
-        <h1>💖 Love You Baby 💖</h1>
+<button id="yes">Yes ❤️</button>
 
-        <img src="kiss1.gif"
-             alt="Couple Kiss"
-             style="width:250px;border-radius:15px;">
+<button id="no">No 😅</button>
 
-        <h2>😘 Miss You ❤️</h2>
-
-        <div style="font-size:45px;">
-            😘🤗💕💞🌹
-        </div>
-    `;
-
-    document.getElementById("celebration").style.display = "block";
-}
-<button id="no">No</button>
 </div>
 
-<div id="celebration">
-<h1>🥰😘🤗</h1>
-<div style="font-size:100px;">🐼</div>
-
-<div id="dance" style="font-size:70px;">
-💃🐼🕺
-</div>
-
-<h2>Thank you for accepting! love you di thangapulla ❤️</h2>
-</div>
+<div id="celebration"></div>
 
 </div>
 
 <script>
-const no = document.getElementById("no");
-let count = 0;
 
-function moveButton() {
-    count++;
+const yes=document.getElementById("yes");
+const no=document.getElementById("no");
+const buttons=document.getElementById("buttons");
+const celebration=document.getElementById("celebration");
 
-    // After 10 attempts or if No is clicked, show the celebration
-   if (count >= 10) {
-    document.getElementById("buttons").style.display = "none";
+let count=0;
 
-    document.getElementById("celebration").innerHTML = `
-        <h1>🥰 Thank You Baby ❤️</h1>
+yes.onclick=function(){
 
-        <img src="kiss2.gif"
-             alt="Cute Kiss"
-             style="width:250px;border-radius:15px;">
+buttons.style.display="none";
 
-        <h2>I'm Ready For That Date 🌹😘</h2>
+celebration.innerHTML=`
+<h1>💖 Love You Baby 💖</h1>
 
-        <div style="font-size:45px;">
-            💋❤️🥰💕
-        </div>
-    `;
+<img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
 
-    document.getElementById("celebration").style.display = "block";
-    return;
-}
-    // Move the No button far away
-    const x = Math.random() * (window.innerWidth - no.offsetWidth);
-    const y = Math.random() * (window.innerHeight - no.offsetHeight);
+<h2>😘 Miss You ❤️</h2>
 
-    no.style.position = "fixed";
-    no.style.left = x + "px";
-    no.style.top = y + "px";
+<p>I Can't Wait To See You 🥰</p>
+
+<div style="font-size:50px;">
+😘🤗💕🌹❤️
+</div>
+`;
+
+celebration.style.display="block";
+
 }
 
-no.addEventListener("mouseover", moveButton);
-no.addEventListener("touchstart", function(e){
-    e.preventDefault();
-    moveButton();
+function moveButton(){
+
+count++;
+
+if(count>=10){
+
+showNoMessage();
+return;
+
+}
+
+const x=Math.random()*(window.innerWidth-120);
+const y=Math.random()*(window.innerHeight-60);
+
+no.style.left=x+"px";
+no.style.top=y+"px";
+
+}
+
+function showNoMessage(){
+
+buttons.style.display="none";
+
+celebration.innerHTML=`
+
+<h1>🥰 Thank You Baby ❤️</h1>
+
+<img src="https://media.giphy.com/media/l4FGpP4lxGGgK5CBW/giphy.gif">
+
+<h2>I'm Ready For That Date 🌹😘</h2>
+
+<p>See You Soon My Love ❤️</p>
+
+<div style="font-size:50px;">
+💋🥰💕🌹
+</div>
+
+`;
+
+celebration.style.display="block";
+
+}
+
+no.addEventListener("mouseover",moveButton);
+
+no.addEventListener("touchstart",function(e){
+
+e.preventDefault();
+
+moveButton();
+
 });
 
-// If the No button is somehow clicked
-no.addEventListener("click", function(e){
-    e.preventDefault();
+no.addEventListener("click",function(e){
 
-    document.getElementById("buttons").style.display = "none";
+e.preventDefault();
 
-    document.getElementById("celebration").innerHTML = `
-        <h1>😘🤗💕</h1>
-        <div style="font-size:100px;">🐼</div>
-        <h2>Thanks for accepting! 💖</h2>
-        <h3>I'm ready for the date! 🌹🥰</h3>
-    `;
+showNoMessage();
 
-    document.getElementById("celebration").style.display = "block";
 });
+
 </script>
 
 </body>
